@@ -60,7 +60,7 @@ class CricketerRestController {
 	public Collection<String> getAllSportsPlayersNames() {
 		
 		List<String> cricketPlayerNames = cricketFeignClient.getCricketers().stream().map(cricketer -> cricketer.getPlayerName()).collect(Collectors.toList());
-		List<String> ttPlayerNames = ttRepository.findAll().stream().map(cricketer -> cricketer.getPlayerName()).collect(Collectors.toList());
+		List<String> ttPlayerNames = ttRepository.findAll().stream().map(ttPlayer -> ttPlayer.getPlayerName()).collect(Collectors.toList());
 		cricketPlayerNames.addAll(ttPlayerNames);
 		return cricketPlayerNames;
 	}
