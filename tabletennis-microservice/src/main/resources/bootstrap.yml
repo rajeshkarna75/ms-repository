@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: tabletennisservice
+
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+      
+  cloud:
+    config:
+      discovery:
+        service-id: configuration-server
+    bus:
+      enabled: true      
+      trace:
+        enabled: true
+      refresh:
+        enabled: true
+        
+        
+      
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+  profiles:
+    active: dev
+
+        
+# Map the error path to error template (for Thymeleaf)
+#error:
+#  path: /error
+
+# HTTP Server
+server:
+  port: 6666   # HTTP (Tomcat) port
+
+# Discovery Server Access
+#  1. DEV ONLY: Reduce the lease renewal interval to speed up registration
+#  2. Define URL of registration server (defaultZone)
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    
+#spring.cloud.bus.enabled = true
+#spring.cloud.trace.enabled = true
+#spring.rabbitmq.host = 10.125.133.127
+#spring.rabbitmq.port = 5672
+#spring.rabbitmq.username = admin
+#spring.rabbitmq.password = admin
+    

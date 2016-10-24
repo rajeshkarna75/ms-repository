@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: registry-app
+    
+#  cloud:
+#     config:
+#       profile: dev
+#       uri: http://localhost:8888
+       
+ # profiles:
+ #   active: dev             

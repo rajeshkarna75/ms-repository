@@ -1,0 +1,40 @@
+spring:
+#  profiles:
+#    active: native
+  config:
+    name: Configuration Server
+  application:
+    name: configuration-server
+  cloud:
+    config:
+      server:
+        #monitor:
+          #github:
+            #enabled: true
+         git:
+          uri: https://github.com/rajeshkarna75/config-server.git
+#        native:
+#          search-locations: file:///D:/Git Repository/config-server
+#      profile: native
+
+    bus:
+      enabled: true
+      trace:
+          enabled: true
+      refresh:
+        enabled: true      
+  
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5
