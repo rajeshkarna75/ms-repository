@@ -1,11 +1,14 @@
 package com.example;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,11 +39,19 @@ class CricketerRestController {
 	@Value("${security.user.password}")
 	String message;
 	
+	@Autowired CricketRepository cricketRepository;
+	
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
 	public String message() {
 
 		logger.info("\n\nHi............\n");
 		return message + " World!";
+	}
+	
+	@RequestMapping(value = "/getCricketPlayers", method = RequestMethod.GET)
+	public Collection<Cricketer> cricketPlayers() {
+
+		return cricketRepository.findAll();
 	}
 }
 
